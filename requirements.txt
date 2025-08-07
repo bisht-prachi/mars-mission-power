@@ -1,1 +1,10 @@
 streamlit
+numpy
+pandas
+matplotlib
+scipy
+scikit-learn
+lightgbm
+xgboost
+mlxtend
+quantile-forest
