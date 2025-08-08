@@ -13,7 +13,7 @@ def get_dd_ref():
     # current_working_directory = os.getcwd()
     # parent_directory = os.path.dirname(current_working_directory)
     # path = os.path.join(parent_directory, 'data', 'elysium_dd_mean.csv')
-    path = f"/app/src/data/elysium_dd_mean.csv"
+    path = f"data/elysium_dd_mean.csv"
     ely_dd = pd.read_csv(path)
 
     ely_ddrate = ely_dd['DD'].values
@@ -29,7 +29,7 @@ def dd_fac_2028(site, ref_dd_mean,Ef_p, Ef_t):
     current_working_directory = os.getcwd()
     parent_directory = os.path.dirname(current_working_directory)
     # path = os.path.join(parent_directory, 'data', f"{site['site_name']}_dd_mean.csv")
-    path = f"/app/src/data/{str(site['site_name'])}_dd_mean.csv"
+    path = f"data/{str(site['site_name'])}_dd_mean.csv"
     df_dd = pd.read_csv(path)
 
     ddrate = df_dd['DD'].values
@@ -54,7 +54,7 @@ def dd_fac_2031(site, ref_dd_mean, Ef_p, Ef_t):
     parent_directory = os.path.dirname(current_working_directory)
     # path = os.path.join(parent_directory, 'data', f"{site['site_name']}_dd_mean.csv")
     
-    path = f"/app/src/data/{str(site['site_name'])}_dd_mean.csv"
+    path = f"data/{str(site['site_name'])}_dd_mean.csv"
     df_dd = pd.read_csv(path)
 
     ddrate = df_dd['DD'].values
