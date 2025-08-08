@@ -15,6 +15,7 @@ license: mit
 ---
 
 # Mars Mission Planning
+demo@ [streamlit communities](https://mars-mission-power.streamlit.app/)
 
 ## Overview
 A research toolkit for optimizing Martian mission planning, focused on solar power generation, dust deposition, and landing site selection. This project integrates Radiative Transfer Models (RTM) with machine learning to support robust power planning and dust mitigation strategies.
@@ -81,4 +82,4 @@ mars_mission_power/
 │
 └── README.md                  # This document
 
-
+Collaborator: [Prajjwal Yash](https://github.com/PrajjwalYash)
