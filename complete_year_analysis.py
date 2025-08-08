@@ -6,6 +6,9 @@ import os
 import pandas as pd
 from scipy import interpolate
 
+
+
+
 def plot_daily_maxima(site_name, Ls, Ew1, Ef_w1, Bw1, Dw1):
     """
     Plots the annual variation of daily maxima solar irradiance for a given site.
@@ -39,11 +42,19 @@ def plot_daily_maxima(site_name, Ls, Ew1, Ef_w1, Bw1, Dw1):
     plt.xlabel('Time of the year', fontsize=20)
     plt.ylabel('W/m$^2$', fontsize=20)
     plt.grid()
-    current_working_directory = os.getcwd()
-    parent_directory = os.path.dirname(current_working_directory)
-    output_path = os.path.join(parent_directory, 'outputs', site_name + '_daily_maxima.png')
+    # current_working_directory = os.getcwd()
+    # parent_directory = os.path.dirname(current_working_directory)
+    # output_path = os.path.join(parent_directory, 'outputs', site_name + '_daily_maxima.png')
+    output_path = f"outputs/{site_name}_daily_maxima.png"
     # Saving the plot
-    plt.savefig(output_path)
+    # plt.savefig(output_path)
+    
+    # Check if file exists
+    if not os.path.exists(output_path):
+        plt.savefig(output_path)
+        print(f"Saved plot to {output_path}")
+    else:
+        print(f"File already exists: {output_path}. Skipping save.")
 
 def plot_available_energy_wo_dust(site_name, Ls, Ef_p):
     """
@@ -63,12 +74,20 @@ def plot_available_energy_wo_dust(site_name, Ls, Ef_p):
     plt.suptitle('Effective available energy at {} \n without dust deposition'.format(site_name))
     plt.xlabel('Time of the year')
     plt.ylabel('MJ/m$^2$')
-    plt.grid()
-    current_working_directory = os.getcwd()
-    parent_directory = os.path.dirname(current_working_directory)
-    output_path = os.path.join(parent_directory, 'outputs', site_name + '_available_energy_before_dust_deposition.png')
+    # plt.grid()
+    # current_working_directory = os.getcwd()
+    # parent_directory = os.path.dirname(current_working_directory)
+    # output_path = os.path.join(parent_directory, 'outputs', site_name + '_available_energy_before_dust_deposition.png')
+    output_path = f"outputs/{site_name}_available_energy_before_dust_deposition.png"
     # Saving the plot
-    plt.savefig(output_path)
+    # plt.savefig(output_path)
+        
+    # Check if file exists
+    if not os.path.exists(output_path):
+        plt.savefig(output_path)
+        print(f"Saved plot to {output_path}")
+    else:
+        print(f"File already exists: {output_path}. Skipping save.")
 
 def export_complete_year_irradiance(site_name, Ls, Ew1, Ef_w1, Bw1, Dw1):
     """
@@ -88,8 +107,16 @@ def export_complete_year_irradiance(site_name, Ls, Ew1, Ef_w1, Bw1, Dw1):
     sur_irr['Eff'] = Ef_w1
     sur_irr['Direct'] = Bw1
     sur_irr['Diffuse'] = Dw1
-    current_working_directory = os.getcwd()
-    parent_directory = os.path.dirname(current_working_directory)
-    output_path = os.path.join(parent_directory, 'outputs', site_name + '_sur_irr_.csv')
+    # current_working_directory = os.getcwd()
+    # parent_directory = os.path.dirname(current_working_directory)
+    # output_path = os.path.join(parent_directory, 'outputs', site_name + '_sur_irr_.csv')
+    output_path = f"outputs/{site_name}_sur_irr_.csv"
     # Saving the DataFrame to a CSV file
-    sur_irr.to_csv(output_path)
+    # sur_irr.to_csv(output_path)
+        
+    # Check if file exists
+    if not os.path.exists(output_path):
+        sur_irr.to_csv(output_path)
+        print(f"Saved csv to {output_path}")
+    else:
+        print(f"File already exists: {output_path}. Skipping save.")

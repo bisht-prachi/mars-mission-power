@@ -119,8 +119,16 @@ def get_optical_depth(site):
     print("Starting get_optical_depth function")
     current_working_directory = os.getcwd()
     parent_directory = os.path.dirname(current_working_directory)
-    path = os.path.join(parent_directory, 'data', str(site['site_name']) + '_tau.csv')
-    print(f"Reading file from path: {path}")
+    # path = os.path.join(parent_directory, 'data', str(site['site_name']) + '_tau.csv')    
+    # path = os.path.join( 'data', str(site['site_name']) + '_tau.csv')
+   
+
+    
+    # print("Current directory:", os.getcwd())
+    # print("Files in data/:", os.listdir('data'))
+    # print(f"Reading file from path: {path}")
+    path = f"/app/src/data/{str(site['site_name'])}_tau.csv"
+
     tau = pd.read_csv(path)
     tau_int = interpolate.interp1d(tau['Ls'].values, tau['tau'].values)
     tau_int = tau_int(Ls)
@@ -148,9 +156,14 @@ def am_mars_spectrum():
     print("Starting am_mars_spectrum function")
     current_working_directory = os.getcwd()
     parent_directory = os.path.dirname(current_working_directory)
-    path1 = os.path.join(parent_directory, 'data', 'am02.txt')
-    path2 = os.path.join(parent_directory, 'data', 'lamda2.txt')
-    print(f"Reading files from paths: {path1} and {path2}")
+    # path1 = os.path.join(parent_directory, 'data', 'am02.txt')
+    # path2 = os.path.join(parent_directory, 'data', 'lamda2.txt')
+    # path1 = os.path.join( 'data', 'am02.txt')
+    # path2 = os.path.join( 'data', 'lamda2.txt')
+    
+    path1 = '/app/src/data/am02.txt'
+    path2 = '/app/src/data/lamda2.txt'
+    # print(f"Reading files from paths: {path1} and {path2}")
     Em0 = np.loadtxt(path1)
     lamda2 = np.loadtxt(path2)
     Emr = Em0 / ((1.52) ** 2)

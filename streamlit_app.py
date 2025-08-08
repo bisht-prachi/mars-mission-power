@@ -1,5 +1,9 @@
-import os
+import os, sys
 os.environ["STREAMLIT_BROWSER_GATHER_USAGE_STATS"] = "false"
+sys.path.append(os.path.dirname(__file__))  # adds current folder
+sys.path.append(os.path.join(os.path.dirname(__file__), '..'))  # adds parent
+sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))  # adds src
+
 
 import streamlit as st
 import numpy as np
@@ -10,17 +14,17 @@ import matplotlib.pyplot as plt
 # Import functions from your modules
 from mars_environment import *
 from complete_year_irr import *
-from complete_year_analysis import *
+from complete_year_analysis import plot_daily_maxima, plot_available_energy_wo_dust, export_complete_year_irradiance
 from dust_deposition_analysis import *
-from load_support import *
-
+from load_support import load_support_duration
 import zipfile
 
-# Unzip only if the data folder doesn't already exist
-if not os.path.exists('data'):
-    with zipfile.ZipFile('data.zip', 'r') as zip_ref:
-        zip_ref.extractall()
+# # Unzip only if the data folder doesn't already exist
+# if not os.path.exists('data'):
+#     with zipfile.ZipFile('data.zip', 'r') as zip_ref:
+#         zip_ref.extractall()
 
+# os.makedirs("outputs", exist_ok=True)
 
 d = np.pi / 180
 P = 88775
@@ -102,9 +106,9 @@ for site in sites:
     Ef_w1 = Bw1 + 0.86 * Dw1
     Ef_p = Bp + 0.86 * Dp
 
-    plot_daily_maxima(site_name=site['full_name'], Ls=Ls, Ew1=Ew1, Ef_w1=Ef_w1, Bw1=Bw1, Dw1=Dw1)
-    plot_available_energy_wo_dust(site_name=site['full_name'], Ls=Ls, Ef_p=Ef_p)
-    export_complete_year_irradiance(site_name=site['site_name'], Ls=Ls, Ew1=Ew1, Ef_w1=Ef_w1, Bw1=Bw1, Dw1=Dw1)
+    # plot_daily_maxima(site_name=site['full_name'], Ls=Ls, Ew1=Ew1, Ef_w1=Ef_w1, Bw1=Bw1, Dw1=Dw1)
+    # plot_available_energy_wo_dust(site_name=site['full_name'], Ls=Ls, Ef_p=Ef_p)
+    # export_complete_year_irradiance(site_name=site['site_name'], Ls=Ls, Ew1=Ew1, Ef_w1=Ef_w1, Bw1=Bw1, Dw1=Dw1)
 
     ref_dd_mean = get_dd_ref()
 

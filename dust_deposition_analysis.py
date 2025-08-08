@@ -10,9 +10,10 @@ Ls = np.linspace(0, 355, 72)
 
 # Function to get dust deposition reference
 def get_dd_ref():
-    current_working_directory = os.getcwd()
-    parent_directory = os.path.dirname(current_working_directory)
-    path = os.path.join(parent_directory, 'data', 'elysium_dd_mean.csv')
+    # current_working_directory = os.getcwd()
+    # parent_directory = os.path.dirname(current_working_directory)
+    # path = os.path.join(parent_directory, 'data', 'elysium_dd_mean.csv')
+    path = f"/app/src/data/elysium_dd_mean.csv"
     ely_dd = pd.read_csv(path)
 
     ely_ddrate = ely_dd['DD'].values
@@ -27,7 +28,8 @@ def get_dd_ref():
 def dd_fac_2028(site, ref_dd_mean,Ef_p, Ef_t):
     current_working_directory = os.getcwd()
     parent_directory = os.path.dirname(current_working_directory)
-    path = os.path.join(parent_directory, 'data', f"{site['site_name']}_dd_mean.csv")
+    # path = os.path.join(parent_directory, 'data', f"{site['site_name']}_dd_mean.csv")
+    path = f"/app/src/data/{str(site['site_name'])}_dd_mean.csv"
     df_dd = pd.read_csv(path)
 
     ddrate = df_dd['DD'].values
@@ -50,7 +52,9 @@ def avail_energy_2028(sol_pow, new, site_name):
 def dd_fac_2031(site, ref_dd_mean, Ef_p, Ef_t):
     current_working_directory = os.getcwd()
     parent_directory = os.path.dirname(current_working_directory)
-    path = os.path.join(parent_directory, 'data', f"{site['site_name']}_dd_mean.csv")
+    # path = os.path.join(parent_directory, 'data', f"{site['site_name']}_dd_mean.csv")
+    
+    path = f"/app/src/data/{str(site['site_name'])}_dd_mean.csv"
     df_dd = pd.read_csv(path)
 
     ddrate = df_dd['DD'].values
@@ -99,12 +103,14 @@ def avail_energy(sol_pow, new, site_name, year):
     plt.ylabel('kWh/m$^{2}$')
     plt.title(f'Available energy at {site_name} \n since time of landing for {year} window')
     plt.grid()
-    current_working_directory = os.getcwd()
-    parent_directory = os.path.dirname(current_working_directory)
-    output_path1 = os.path.join(parent_directory, 'outputs', site_name + f'Available_energy_with_dust_deposition_{year}_{site_name}.png')
-    output_path2 = os.path.join(parent_directory, 'outputs', site_name + f'{site_name}_{year}.txt')
-    plt.savefig(output_path1)
-    np.savetxt(output_path2, sol_pow_smooth)
+    # current_working_directory = os.getcwd()
+    # parent_directory = os.path.dirname(current_working_directory)
+    # output_path1 = os.path.join(parent_directory, 'outputs', site_name + f'Available_energy_with_dust_deposition_{year}_{site_name}.png')
+    # output_path2 = os.path.join(parent_directory, 'outputs', site_name + f'{site_name}_{year}.txt')
+    # plt.savefig(output_path1)
+    # output_path1 = os.path.join( 'outputs', site_name + f'Available_energy_with_dust_deposition_{year}_{site_name}.png')
+    # output_path2 = os.path.join( 'outputs', site_name + f'{site_name}_{year}.txt')
+    # np.savetxt(output_path2, sol_pow_smooth)
     
     return sol_pow_smooth
 
