@@ -59,13 +59,13 @@ A research toolkit for optimizing Martian mission planning, focused on solar pow
 
 ```plaintext
 mars_mission_power/
-├── app.py                        # Main Streamlit app entry point
+├── streamlit_app.py                        # Main Streamlit app entry point
 │
 ├── data/
 │   ├── site_tau.csv              # Optical depth (tau) data
 │   └── site_dd_mean.csv          # Daily mean dust deposition rates
 │
-├── src/                          # Source code and modules
+├── # Source code and modules
 │   ├── RTM_implementation.py              # RTM for solar irradiance
 │   ├── mars_environment.py                # Mars atmospheric ingestion
 │   ├── complete_year_irr.py               # Year-round irradiance modeling
